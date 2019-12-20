@@ -1,0 +1,46 @@
+<ion-content>
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="12">
+      <ion-img class="round" [src]="image"></ion-img>
+    </ion-col>
+  </ion-row>
+
+  <h3 class="ion-text-center">Bienvenido</h3>
+  <div class="ion-padding top">
+    <form>
+      <ion-list class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Correo:</ion-label>
+          <ion-input type="email" name="email" required
+            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
+          </ion-input>
+        </ion-item>
+        <div class="sep">
+
+        </div>
+        <ion-item>
+          <ion-label position="floating">Contraseña:</ion-label>
+          <ion-input type="password" name="password" required pattern="([A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9])\S{2,16}$">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <div class="ion-padding ion-text-center">
+        <ion-button expand="full">
+          Ingresar
+        </ion-button>
+      </div>
+    </form>
+
+    <div class="ion-padding ion-text-center">
+      <ion-button color="danger" fill="outline" size="default">
+        Registrase
+      </ion-button>
+    </div>
+
+  </div>
+    
+  
+
+</ion-grid>
+</ion-content>
