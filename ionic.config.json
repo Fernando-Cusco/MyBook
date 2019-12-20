@@ -1,5 +1,6 @@
 {
   "name": "MyBook",
   "integrations": {},
-  "type": "angular"
+  "type": "angular",
+  "id": "f5859ccd"
 }
