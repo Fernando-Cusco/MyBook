@@ -12,19 +12,20 @@
       <ion-list class="ion-padding">
         <ion-item>
           <ion-label position="floating">Correo:</ion-label>
-          <ion-input type="email" name="email" required
+          <ion-input type="email" name="email" required [(ngModel)]="usuario.correo"
             pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
           </ion-input>
         </ion-item>
         <div class="sep"></div>
         <ion-item>
           <ion-label position="floating">Contraseña:</ion-label>
-          <ion-input type="password" name="password" required pattern="([A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9])\S{2,16}$">
+          <ion-input type="password" name="password" required  [(ngModel)]="usuario.password"
+            pattern="([A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9])\S{2,16}$">
           </ion-input>
         </ion-item>
       </ion-list>
       <div class="ion-padding ion-text-center">
-        <ion-button expand="full">
+        <ion-button expand="full" (click)="login()">
           Ingresar
         </ion-button>
       </div>
