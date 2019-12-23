@@ -1,15 +1,17 @@
-<ion-content>
-
-  <form>
-
-    <ion-label>Ciudad</ion-label>
-    <ion-input type="text" [value]="ciudad" (input)="ciudad = $event.target.value"></ion-input>
-    <ion-label>Calles</ion-label>
-    <ion-input type="text" [value]="calles" (input)="calles = $event.target.value"></ion-input>
-    <ion-button (click)="set()">
-      Agregar
-    </ion-button>
-  </form>
-
-
-</ion-content>
+<div class="ion-padding">
+  <h4 class="ion-text-center">Agrega tu direccion</h4>
+  <div>
+    <form>
+      <ion-input type="text" [value]="ciudad" placeholder="ciudad" (input)="ciudad = $event.target.value"></ion-input>
+      <ion-input type="text" [value]="calles" placeholder="calles" (input)="calles = $event.target.value"></ion-input>
+      <div class="ion-text-center ion-padding">
+        <ion-button (click)="set()">
+          Agregar
+        </ion-button>
+        <ion-button (click)="cancel()" color="danger">
+          Cancelar
+        </ion-button>
+      </div>
+    </form>
+  </div>
+</div>

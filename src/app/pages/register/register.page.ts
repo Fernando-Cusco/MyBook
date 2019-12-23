@@ -36,7 +36,8 @@ export class RegisterPage implements OnInit {
   async direccion() {
     const popover = await this.popCtrl.create({
       component: DireccionComponent,
-      translucent: true
+      translucent: true,
+      backdropDismiss: false
     });
     await popover.present();
     const { data } = await popover.onWillDismiss();

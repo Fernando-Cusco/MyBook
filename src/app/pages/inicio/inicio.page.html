@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="start" name="basket"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides mode="ios" scrollbar="ios" [options]="slideOpt">
+    <ion-slide *ngFor="let libro of libros | pares">
+      <ion-row>
+        <ion-col *ngFor="let lib of libro">
+          <ion-card>
+              <ion-card-header>
+                <ion-img class="alt" [src]="poster"></ion-img>
+                <ion-card-subtitle>{{ lib.titulo }}</ion-card-subtitle>
+                <ion-card-title>{{ lib.titulo }}</ion-card-title>
+                <ion-card-content>
+                  {{ lib.descripcion }}
+                </ion-card-content>
+              </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

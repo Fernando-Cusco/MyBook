@@ -22,6 +22,4 @@ export class UsuarioService {
     return this.http.post<Respuesta>('http://localhost:8080/Libreria/rest/usuario/registro', usuario, {headers: this.httpHeaders});
   }
 
-
-
 }

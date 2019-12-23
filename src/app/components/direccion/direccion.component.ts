@@ -25,4 +25,8 @@ export class DireccionComponent implements OnInit {
     
   }
 
+  async cancel() {
+    await this.popCtrl.dismiss();
+  }
+
 }
