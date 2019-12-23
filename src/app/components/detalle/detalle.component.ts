@@ -11,7 +11,6 @@ import { Libro } from 'src/app/pages/inicio/libro';
 export class DetalleComponent implements OnInit {
 
   @Input() id;
-  libros: Libro[] = [];
   constructor(private modalCtrl: ModalController, private service: LibrosService) {
 
   }
@@ -25,16 +24,7 @@ export class DetalleComponent implements OnInit {
     });
   }
 
-  buscar() {
-    this.service.buscarSimilar('el').subscribe( response => {
-      this.libros = response;
-      this.libros.forEach(element => {
-        console.log(element.titulo);
-      });
-    }, (error) => {
-      console.log('Error '+error);
-    });
-  }
+  
 
 
   regresar() {
