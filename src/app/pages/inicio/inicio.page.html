@@ -14,7 +14,7 @@
     <ion-slide *ngFor="let libro of libros | pares">
       <ion-row>
         <ion-col *ngFor="let lib of libro">
-          <ion-card>
+          <ion-card (click)="verDetalle(lib.id)">
               <ion-card-header>
                 <ion-img class="alt" [src]="poster"></ion-img>
                 <ion-card-subtitle>{{ lib.titulo }}</ion-card-subtitle>

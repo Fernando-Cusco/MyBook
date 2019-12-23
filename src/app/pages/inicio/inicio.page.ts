@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LibrosService } from '../../services/libros.service';
 import { Libro } from './libro';
+import { ModalController } from '@ionic/angular';
+import { DetalleComponent } from '../../components/detalle/detalle.component';
 
 @Component({
   selector: 'app-inicio',
@@ -15,7 +17,7 @@ export class InicioPage implements OnInit {
     freeMode: true
   }
 
-  constructor(private service: LibrosService) { }
+  constructor(private service: LibrosService, private modalCtrl: ModalController) { }
 
   ngOnInit() {
     this.service.todas().subscribe(response => {
@@ -29,4 +31,13 @@ export class InicioPage implements OnInit {
     })
   }
 
+  async verDetalle(id: string) {
+    const modal = await this.modalCtrl.create({
+      component: DetalleComponent,
+      componentProps: {
+        id: id
+      }
+    });
+    modal.present();
+  }
 }

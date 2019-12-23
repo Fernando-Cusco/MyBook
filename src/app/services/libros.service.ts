@@ -13,5 +13,9 @@ export class LibrosService {
   todas():Observable <Libro[]> {
     return this.http.get<Libro[]>('http://localhost:8080/Libreria/rest/libros/todos');
   }
+
+  buscar(id: number):Observable<Libro> {
+    return this.http.get<Libro>(`http://localhost:8080/Libreria/rest/libros/buscar/${id}`);
+  }
   
 }
