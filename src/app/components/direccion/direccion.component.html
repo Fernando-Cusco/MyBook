@@ -1,0 +1,15 @@
+<ion-content>
+
+  <form>
+
+    <ion-label>Ciudad</ion-label>
+    <ion-input type="text" [value]="ciudad" (input)="ciudad = $event.target.value"></ion-input>
+    <ion-label>Calles</ion-label>
+    <ion-input type="text" [value]="calles" (input)="calles = $event.target.value"></ion-input>
+    <ion-button (click)="set()">
+      Agregar
+    </ion-button>
+  </form>
+
+
+</ion-content>

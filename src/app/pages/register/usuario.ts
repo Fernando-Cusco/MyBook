@@ -4,7 +4,7 @@ export class Usuario {
     nombres: string;
     correo: string;
     password: string;
-    fechaNacimiento: Date;
+    fecha: string;
     telefono: string;
-    direcciones: Direccion[];
+    direcciones: Direccion;
 }
