@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { LibrosService } from '../../services/libros.service';
+import { Libro } from 'src/app/pages/inicio/libro';
 
 @Component({
   selector: 'app-detalle',
@@ -10,7 +11,7 @@ import { LibrosService } from '../../services/libros.service';
 export class DetalleComponent implements OnInit {
 
   @Input() id;
-
+  libros: Libro[] = [];
   constructor(private modalCtrl: ModalController, private service: LibrosService) {
     console.log("Id libro llego: "+this.id);
     
@@ -21,8 +22,21 @@ export class DetalleComponent implements OnInit {
       console.log("Libro: "+response.titulo);
     }, (error) => {
       console.log("ERROR: "+error);
+      this.regresar();
     });
   }
+
+  buscar() {
+    this.service.buscarSimilar('el').subscribe( response => {
+      this.libros = response;
+      this.libros.forEach(element => {
+        console.log(element.titulo);
+      });
+    }, (error) => {
+      console.log('Error '+error);
+    });
+  }
+
 
   regresar() {
     this.modalCtrl.dismiss();
