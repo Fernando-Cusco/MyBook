@@ -3,19 +3,21 @@ import { CommonModule } from '@angular/common';
 import { DireccionComponent } from './direccion/direccion.component';
 import { IonicModule } from '@ionic/angular';
 import { DetalleComponent } from './detalle/detalle.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
 @NgModule({
-  entryComponents: [DireccionComponent, DetalleComponent],
-  declarations: [DireccionComponent, DetalleComponent],
+  entryComponents: [DireccionComponent, DetalleComponent, FooterComponent],
+  declarations: [DireccionComponent, DetalleComponent, FooterComponent],
   imports: [
     CommonModule,
     IonicModule
   ],
   exports:[
     DireccionComponent,
-    DetalleComponent
+    DetalleComponent,
+    FooterComponent
   ]
 })
 export class ComponentsModule { }

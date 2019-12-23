@@ -13,8 +13,7 @@ export class DetalleComponent implements OnInit {
   @Input() id;
   libros: Libro[] = [];
   constructor(private modalCtrl: ModalController, private service: LibrosService) {
-    console.log("Id libro llego: "+this.id);
-    
+
   }
 
   ngOnInit() {

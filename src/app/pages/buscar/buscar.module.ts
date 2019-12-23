@@ -4,12 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { InicioPageRoutingModule } from './inicio-routing.module';
+import { BuscarPageRoutingModule } from './buscar-routing.module';
 
-import { InicioPage } from './inicio.page';
-import { PipesModule } from '../../pipes/pipes.module';
-
-
+import { BuscarPage } from './buscar.page';
 import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
@@ -17,10 +14,9 @@ import { ComponentsModule } from '../../components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    InicioPageRoutingModule,
-    PipesModule,
+    BuscarPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [InicioPage]
+  declarations: [BuscarPage]
 })
-export class InicioPageModule {}
+export class BuscarPageModule {}
