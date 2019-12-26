@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../register/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,15 +13,18 @@ export class LoginPage implements OnInit {
 
   usuario: Usuario = new Usuario();
 
-  constructor(private service: UsuarioService) { }
+  constructor(private service: UsuarioService, private router: Router) { }
 
   ngOnInit() {
   }
 
   login() {
     this.service.login(this.usuario).subscribe(response => {
-      console.log("Login Correcto "+response.correo+" "+response.password+" "+response.id);
+      this.router.navigate(['/inicio'], {queryParams: {
+        id: response.id
+      }})
     });
   }
+
 
 }

@@ -11,18 +11,14 @@ import { Libro } from 'src/app/pages/inicio/libro';
 export class DetalleComponent implements OnInit {
   libro: Libro;
   @Input() id;
+  @Input() idUser;
   poster = 'http://es.web.img2.acsta.net/pictures/210/521/21052107_20131023133923735.jpg';
   constructor(private modalCtrl: ModalController, private service: LibrosService) {
 
   }
 
   ngOnInit() {
-    this.service.buscar(this.id).subscribe( response => {
-      console.log("DATOS DEL LIBRO");
-      
-      console.log(response);
-      
-      this.libro = response;
+    this.service.buscar(this.id).subscribe( response => {this.libro = response;
     }, (error) => {
       console.log("ERROR: "+error);
       this.regresar();
