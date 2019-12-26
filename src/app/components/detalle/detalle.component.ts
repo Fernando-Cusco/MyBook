@@ -9,7 +9,7 @@ import { Libro } from 'src/app/pages/inicio/libro';
   styleUrls: ['./detalle.component.scss'],
 })
 export class DetalleComponent implements OnInit {
-
+  libro: Libro;
   @Input() id;
   poster = 'http://es.web.img2.acsta.net/pictures/210/521/21052107_20131023133923735.jpg';
   constructor(private modalCtrl: ModalController, private service: LibrosService) {
@@ -18,7 +18,9 @@ export class DetalleComponent implements OnInit {
 
   ngOnInit() {
     this.service.buscar(this.id).subscribe( response => {
-      console.log("Libro: "+response.titulo);
+      console.log(response);
+      
+      this.libro = response;
     }, (error) => {
       console.log("ERROR: "+error);
       this.regresar();
