@@ -55,7 +55,7 @@ export class InicioPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: CarritoComprasComponent,
       componentProps: {
-
+        idUser: this.idUser
       }
     });
     modal.present();
