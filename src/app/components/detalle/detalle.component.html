@@ -1,6 +1,68 @@
 <ion-content>
-  <h1 class="ion-text-center">Libro {{ id }}</h1>
- 
+  <h1 class="ion-text-left ion-padding">Libro {{ id }}</h1>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="5">
+        <ion-card class="anc">
+          <ion-card-header>
+            <ion-img class="alt" [src]="poster"></ion-img>
+            <ion-card-subtitle>{{ id }}</ion-card-subtitle>
+            <ion-card-title>Miguel de Cervantes</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="7">
+        <h4>Los juegos del hambre</h4>
+        <br>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Molestias iusto reiciendis quo, quam tenetur,
+          pariatur nostrum corporis aliquam ipsum deleniti iste doloremque
+          voluptatum rem praesentium fugit atque possimus ea minima?
+        </p>
+        <br>
+        <div>
+          <ion-chip>
+            <ion-icon name="podium" color="primary"></ion-icon>
+            <ion-label>Paginas</ion-label>
+          </ion-chip>
+          <ion-chip>
+            <ion-icon name="pricetags" color="primary"></ion-icon>
+            <ion-label>Precio</ion-label>
+          </ion-chip>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col size="5">
+        <ion-button class="siz">
+          <ion-icon slot="icon-only" name="thumbs-up"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col size="5">
+        <ion-button class="siz">
+          <ion-icon slot="icon-only" name="cart"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col size="5">
+        <ion-button class="siz">
+          <ion-icon slot="icon-only" name="md-share"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+
+
+
 </ion-content>
 
 <ion-footer>
