@@ -4,12 +4,13 @@ import { DireccionComponent } from './direccion/direccion.component';
 import { IonicModule } from '@ionic/angular';
 import { DetalleComponent } from './detalle/detalle.component';
 import { FooterComponent } from './footer/footer.component';
+import { CarritoComprasComponent } from './carrito-compras/carrito-compras.component';
 
 
 
 @NgModule({
-  entryComponents: [DireccionComponent, DetalleComponent, FooterComponent],
-  declarations: [DireccionComponent, DetalleComponent, FooterComponent],
+  entryComponents: [DireccionComponent, DetalleComponent, FooterComponent, CarritoComprasComponent],
+  declarations: [DireccionComponent, DetalleComponent, FooterComponent, CarritoComprasComponent],
   imports: [
     CommonModule,
     IonicModule
@@ -17,7 +18,8 @@ import { FooterComponent } from './footer/footer.component';
   exports:[
     DireccionComponent,
     DetalleComponent,
-    FooterComponent
+    FooterComponent,
+    CarritoComprasComponent
   ]
 })
 export class ComponentsModule { }

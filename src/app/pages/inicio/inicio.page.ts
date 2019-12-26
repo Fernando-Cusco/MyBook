@@ -4,6 +4,7 @@ import { Libro } from './libro';
 import { ModalController } from '@ionic/angular';
 import { DetalleComponent } from '../../components/detalle/detalle.component';
 import { ActivatedRoute } from '@angular/router';
+import { CarritoComprasComponent } from '../../components/carrito-compras/carrito-compras.component';
 
 @Component({
   selector: 'app-inicio',
@@ -45,6 +46,16 @@ export class InicioPage implements OnInit {
       componentProps: {
         id: id,
         idUser: this.idUser
+      }
+    });
+    modal.present();
+  }
+
+  async carrito() {
+    const modal = await this.modalCtrl.create({
+      component: CarritoComprasComponent,
+      componentProps: {
+
       }
     });
     modal.present();

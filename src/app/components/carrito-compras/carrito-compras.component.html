@@ -1,3 +1,31 @@
-<p>
-  carrito-compras works!
-</p>
+<ion-content class="ion-padding">
+  <h3>Carrito de compras</h3>
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Libro 1</ion-card-subtitle>
+    <ion-card-title>Las aventuras de Ruben y el viejo parra</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    Cantidad: 4
+    <ion-button (click)="sumar()">
+      +
+    </ion-button>
+    <ion-button (click)="restar()">
+      -
+    </ion-button>
+    <ion-button class="fond" (click)="quitar()" color="danger">
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
+    </ion-button>
+  </ion-card-content>
+</ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="regresar()">
+        <ion-icon slot="start" name="arrow-round-back"></ion-icon>
+        Regresar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
