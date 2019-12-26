@@ -34,4 +34,8 @@ export class CarritoComprasComponent implements OnInit {
   quitar() {
 
   }
+
+  pago() {
+    
+  }
 }
