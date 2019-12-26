@@ -5,26 +5,26 @@
         <ion-card class="anc">
           <ion-card-header>
             <ion-img class="alt" [src]="poster"></ion-img>
-            <ion-card-subtitle>{{ libro.titulo }}</ion-card-subtitle>
+            <ion-card-subtitle *ngIf="libro != null">{{ libro.titulo }}</ion-card-subtitle>
             <ion-card-title>Miguel de Cervantes</ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-col>
       <ion-col size="7">
-        <h4>{{ libro.titulo }}</h4>
+        <h4 *ngIf="libro != null">{{ libro.titulo }}</h4>
         <br>
-        <p>
+        <p *ngIf="libro != null">
          {{ libro.descripcion }}
         </p>
         <br>
         <div>
           <ion-chip>
             <ion-icon name="podium" color="primary"></ion-icon>
-            <ion-label>{{ libro.paginas }}</ion-label>
+            <ion-label *ngIf="libro != null">Numero de paginas: {{ libro.paginas }}</ion-label>
           </ion-chip>
           <ion-chip>
             <ion-icon name="pricetags" color="primary"></ion-icon>
-            <ion-label>{{ libro.precio }}</ion-label>
+            <ion-label *ngIf="libro != null">Precio: ${{ libro.precio }}</ion-label>
           </ion-chip>
         </div>
       </ion-col>

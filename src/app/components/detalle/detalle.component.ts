@@ -18,6 +18,8 @@ export class DetalleComponent implements OnInit {
 
   ngOnInit() {
     this.service.buscar(this.id).subscribe( response => {
+      console.log("DATOS DEL LIBRO");
+      
       console.log(response);
       
       this.libro = response;
