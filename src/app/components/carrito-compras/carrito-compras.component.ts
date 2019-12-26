@@ -9,6 +9,7 @@ import { ModalController } from '@ionic/angular';
 export class CarritoComprasComponent implements OnInit {
 
   cantidad:number = 1;
+  total:number = 10;
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {}
@@ -19,10 +20,15 @@ export class CarritoComprasComponent implements OnInit {
 
   sumar() {
     this.cantidad++;
+    this.total = this.cantidad * 12;
   }
 
   restar() {
-    this.cantidad--;
+    if(this.cantidad > 1) {
+      this.cantidad--;
+      this.total = this.cantidad * 12;
+    }
+    
   }
 
   quitar() {
