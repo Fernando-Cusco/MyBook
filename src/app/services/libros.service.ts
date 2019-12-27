@@ -21,5 +21,9 @@ export class LibrosService {
   buscarSimilar(key: string):Observable<Libro[]> {
     return this.http.get<Libro[]>(`http://localhost:8080/Libreria/rest/libros/similar?&key=${key}`);
   }
+
+  votar(idu: number, idl: number){
+    return this.http.get(`http://localhost:8080/Libreria/rest/usuario/votar/${idu}/${idl}`);
+  }
   
 }

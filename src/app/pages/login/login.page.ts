@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
   image = "../assets/user.png";
-
+  idUser: number;
   usuario: Usuario = new Usuario();
 
   constructor(private service: UsuarioService, private router: Router) { }
@@ -20,9 +20,12 @@ export class LoginPage implements OnInit {
 
   login() {
     this.service.login(this.usuario).subscribe(response => {
+      console.log(response);
+      
+      this.idUser = response.id;
       this.router.navigate(['/inicio'], {queryParams: {
-        id: response.id
-      }})
+        id: this.idUser
+      }});
     });
   }
 

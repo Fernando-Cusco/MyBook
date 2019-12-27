@@ -1,6 +1,8 @@
 {
   "name": "MyBook",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "f5859ccd"
 }

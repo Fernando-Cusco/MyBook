@@ -32,4 +32,11 @@ export class DetalleComponent implements OnInit {
     this.modalCtrl.dismiss();
   }
 
+  votar() {
+    this.service.votar(this.idUser, this.id).subscribe(response => {
+      console.log(response);
+      
+    });
+  }
+
 }

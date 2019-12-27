@@ -15,8 +15,8 @@ export class BuscarPage implements OnInit {
   ngOnInit() {
   }
 
-  buscar(event) {
-    this.service.buscarSimilar(event.detail.value).subscribe( response => {
+  async buscar(event) {
+    this.service.buscarSimilar(event.target.value).subscribe( response => {
       this.libros = response;
       this.libros.forEach(element => {
         console.log(element.titulo);
