@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { CarritoService } from '../../services/carrito.service';
+import { Libro } from 'src/app/pages/inicio/libro';
+import { LibrosService } from '../../services/libros.service';
 
 @Component({
   selector: 'app-carrito-compras',
@@ -10,7 +13,21 @@ export class CarritoComprasComponent implements OnInit {
 
   cantidad:number = 1;
   total:number = 10;
-  constructor(private modalCtrl: ModalController) { }
+  idsLibro: number[] = [];
+
+  libros: Libro[] = [];
+
+  constructor(private modalCtrl: ModalController, private serviceCar: CarritoService, private service: LibrosService) {
+    this.cargar();
+    
+   }
+
+   async cargar() {
+    this.idsLibro = await this.serviceCar.cargarCarrito();
+    for( let id in this.idsLibro) {
+      this.buscar(this.idsLibro[id]);
+    }
+   }
 
   ngOnInit() {}
 
@@ -37,5 +54,11 @@ export class CarritoComprasComponent implements OnInit {
 
   pago() {
     
+  }
+
+  buscar(id: number) {
+    this.service.buscar(id).subscribe(response => {
+      this.libros.push(response);
+    });
   }
 }

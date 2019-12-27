@@ -18,10 +18,10 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-<ion-card>
+<ion-card *ngFor="let l of libros">
   <ion-card-header>
-    <ion-card-subtitle>Libro 1</ion-card-subtitle>
-    <ion-card-title>Las aventuras de Ruben y el viejo parra</ion-card-title>
+    <ion-card-subtitle>{{ l.id }}</ion-card-subtitle>
+    <ion-card-title>{{ l.titulo }}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
     Cantidad: {{ cantidad }}
