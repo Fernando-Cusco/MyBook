@@ -32,7 +32,7 @@ export class InicioPage implements OnInit {
     this.service.todas().subscribe(response => {
       this.libros = response;
       this.libros.forEach(element => {
-        console.log(element);
+        console.log(element.autores);
       }); 
     },(error) => {
       console.log(error);

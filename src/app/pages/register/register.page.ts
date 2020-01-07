@@ -4,6 +4,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { Direccion } from './direccion';
 import { PopoverController } from '@ionic/angular';
 import { DireccionComponent } from 'src/app/components/direccion/direccion.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,9 @@ export class RegisterPage implements OnInit {
   usuario: Usuario = new Usuario();
 
 
-  constructor(private service: UsuarioService, private popCtrl: PopoverController) { }
+  constructor(private service: UsuarioService,
+              private popCtrl: PopoverController,
+              private router: Router) { }
   ngOnInit() {
     
   }
@@ -25,8 +28,8 @@ export class RegisterPage implements OnInit {
     console.log(this.usuario);
     
     this.service.registro(this.usuario).subscribe(response => {
-      console.log(response.id);
-      console.log(response.mensaje);
+      console.log(response);
+      this.router.navigate(['/login']);
     },(error) => {
       console.log("ERRRORRR "+error.message);
       

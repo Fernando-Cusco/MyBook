@@ -23,7 +23,7 @@ export class LibrosService {
   }
 
   votar(idu: number, idl: number){
-    return this.http.get(`http://localhost:8080/Libreria/rest/usuario/votar/${idu}/${idl}`);
+    return this.http.get(`http://localhost:8080/Libreria/rest/votos/votar?usuario_id=${idu}&libro_id=${idl}`);
   }
   
 }

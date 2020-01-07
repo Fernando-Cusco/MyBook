@@ -18,20 +18,20 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-<ion-card *ngFor="let l of libros">
+<ion-card *ngFor="let l of libros; index as i">
   <ion-card-header>
-    <ion-card-subtitle>{{ l.id }}</ion-card-subtitle>
+    <ion-card-subtitle>{{ posiciones[i] }}</ion-card-subtitle>
     <ion-card-title>{{ l.titulo }}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    Cantidad: {{ cantidad }}
-    <ion-button (click)="sumar()">
+    Cantidad: {{ cantidades[i] }} 
+    <ion-button (click)="sumar(posiciones[i], '+')">
       +
     </ion-button>
-    <ion-button (click)="restar()">
+    <ion-button (click)="sumar(posiciones[i], '-')">
       -
     </ion-button>
-    <ion-button class="fond" (click)="quitar()" color="danger">
+    <ion-button class="fond" (click)="quitar(l, posiciones[i], l.id)" color="danger">
       <ion-icon slot="icon-only" name="trash"></ion-icon>
     </ion-button>
   </ion-card-content>

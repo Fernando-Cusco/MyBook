@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Detalle } from '../components/carrito-compras/detalle';
 
 
 @Injectable({
@@ -8,7 +11,8 @@ import { Storage } from '@ionic/storage';
 export class CarritoService {
 
   idsLibro: number[] = [];
-  constructor(private storage: Storage) { }
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  constructor(private storage: Storage, private http: HttpClient) { }
 
 
   agregarCarrito(id: number) {
@@ -21,6 +25,13 @@ export class CarritoService {
     this.idsLibro = id || [];
     this.idsLibro = this.idsLibro.filter((valor, i, array) => array.indexOf(valor) === i);
     return this.idsLibro;
+  }
+
+
+  enviarDetalles(detalles: Detalle[]): Observable<any> {
+    console.log("Todos los detalles",detalles);
+    
+    return this.http.post('http://localhost:8080/Libreria/rest/compras/detalles', detalles, {headers: this.httpHeaders});
   }
 
 }

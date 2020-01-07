@@ -7,4 +7,5 @@ export class Libro {
     paginas: number;
     precio: number;
     stock: number;
+    autores: number[]
 }
