@@ -14,13 +14,13 @@
     <ion-slide *ngFor="let libro of libros | pares">
       <ion-row>
         <ion-col *ngFor="let lib of libro">
-          <ion-card class="altc" (click)="verDetalle(lib.id)">
+          <ion-card (click)="verDetalle(lib.id)">
               <ion-card-header>
-                <img class="alt" [src]="poster"/>
+                <img [src]="poster"/>
                 <ion-card-title>{{ lib.titulo }}</ion-card-title>
                 <ion-card-content>
                   <p class="ion-text-xl-justify">
-                    {{ lib.descripcion | slice: 0:60 }} ...
+                   Autores
                   </p>
                 </ion-card-content>
               </ion-card-header>

@@ -19,14 +19,17 @@ export class DetalleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.buscar(this.id).subscribe( response => {this.libro = response;
+    this.service.buscar(this.id).subscribe(response => {
+      console.log('Found', response);
+      
+      this.libro = response;
     }, (error) => {
-      console.log("ERROR: "+error);
+      console.log("ERROR: " + error);
       this.regresar();
     });
   }
 
-  
+
 
 
   regresar() {
@@ -36,7 +39,7 @@ export class DetalleComponent implements OnInit {
   votar() {
     this.service.votar(this.idUser, this.id).subscribe(response => {
       console.log(response);
-      
+
     });
   }
 

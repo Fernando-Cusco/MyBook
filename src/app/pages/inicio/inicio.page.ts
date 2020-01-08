@@ -17,7 +17,7 @@ export class InicioPage implements OnInit {
   libros: Libro[] = [];
   poster = 'http://es.web.img2.acsta.net/pictures/210/521/21052107_20131023133923735.jpg';
   slideOpt = {
-    slidesPerView: 1.6,
+    slidesPerView: 2.1,
     freeMode: true
   }
 
