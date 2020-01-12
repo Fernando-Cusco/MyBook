@@ -20,20 +20,31 @@
   </ion-grid>
 <ion-card *ngFor="let l of libros; index as i">
   <ion-card-header>
-    <ion-card-subtitle>{{ posiciones[i] }}</ion-card-subtitle>
     <ion-card-title>{{ l.titulo }}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    Cantidad: {{ cantidades[i] }} 
-    <ion-button (click)="sumar(posiciones[i], '+')">
-      +
-    </ion-button>
-    <ion-button (click)="sumar(posiciones[i], '-')">
-      -
-    </ion-button>
-    <ion-button class="fond" (click)="quitar(l, posiciones[i], l.id)" color="danger">
-      <ion-icon slot="icon-only" name="trash"></ion-icon>
-    </ion-button>
+
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="4"> Cantidad: {{ cantidades[i] }} </ion-col>
+        <ion-col size="2">
+          <ion-button (click)="sumar(posiciones[i], '+')">
+            +
+          </ion-button>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button (click)="sumar(posiciones[i], '-')">
+            -
+          </ion-button>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+        <ion-col size="2">
+          <ion-button class="fond" (click)="quitar(l, posiciones[i], l.id)" color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card-content>
 </ion-card>
 <ion-button (click)="pago()" expand="block">
