@@ -43,8 +43,9 @@ export class CarritoComprasComponent implements OnInit {
   
   ionViewDidEnter() {
     let ct: number[] = [];
-    ct.push(1);
-    ct.push(1);
+    for(let cant in this.idsLibro) {
+      ct.push(1);
+    }
     this.enviarDetalle(ct);
   }
 
