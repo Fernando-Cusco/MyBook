@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { LibrosService } from '../../services/libros.service';
 import { Libro } from 'src/app/pages/inicio/libro';
 import { CarritoService } from '../../services/carrito.service';
+import { Autor } from '../../pages/inicio/autor';
 
 @Component({
   selector: 'app-detalle',
@@ -11,6 +12,7 @@ import { CarritoService } from '../../services/carrito.service';
 })
 export class DetalleComponent implements OnInit {
   libro: Libro;
+  autores: Autor[] = [];
   @Input() id;
   @Input() idUser;
   poster = 'http://es.web.img2.acsta.net/pictures/210/521/21052107_20131023133923735.jpg';
@@ -21,7 +23,7 @@ export class DetalleComponent implements OnInit {
   ngOnInit() {
     this.service.buscar(this.id).subscribe(response => {
       console.log('Found', response);
-      
+      this.autores = response.autores;
       this.libro = response;
     }, (error) => {
       console.log("ERROR: " + error);

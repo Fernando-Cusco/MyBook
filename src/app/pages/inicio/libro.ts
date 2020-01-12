@@ -1,3 +1,4 @@
+import { Autor } from './autor';
 export class Libro {
     id: number;
     titulo: string;
@@ -7,5 +8,5 @@ export class Libro {
     paginas: number;
     precio: number;
     stock: number;
-    autores: number[]
+    autores: Autor[]
 }

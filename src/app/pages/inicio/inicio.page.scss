@@ -10,5 +10,12 @@ ion-card-header img:hover {
 }
 
 ion-card-title {
-    font-size: 11px;
+    height: 40px;
+    
+}
+
+ion-card-title  p {
+    margin-top: 15px;
+    font-size: 13px;
+    text-justify: center;
 }

@@ -5,6 +5,7 @@ import { ModalController } from '@ionic/angular';
 import { DetalleComponent } from '../../components/detalle/detalle.component';
 import { ActivatedRoute } from '@angular/router';
 import { CarritoComprasComponent } from '../../components/carrito-compras/carrito-compras.component';
+import { Autor } from './autor';
 
 @Component({
   selector: 'app-inicio',
@@ -15,10 +16,11 @@ export class InicioPage implements OnInit {
 
   idUser: number;
   libros: Libro[] = [];
+  
   poster = 'http://es.web.img2.acsta.net/pictures/210/521/21052107_20131023133923735.jpg';
   slideOpt = {
-    slidesPerView: 2.1,
-    freeMode: true
+    slidesPerView: 2.9,
+    freeMode: false
   }
 
   constructor(private service: LibrosService, private modalCtrl: ModalController, private router: ActivatedRoute) { 

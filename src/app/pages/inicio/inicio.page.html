@@ -17,12 +17,11 @@
           <ion-card (click)="verDetalle(lib.id)">
               <ion-card-header>
                 <img [src]="poster"/>
-                <ion-card-title>{{ lib.titulo }}</ion-card-title>
-                <ion-card-content>
-                  <p class="ion-text-xl-justify">
-                   Autores
+                <ion-card-title>
+                  <p>
+                    {{ lib.titulo }}
                   </p>
-                </ion-card-content>
+                </ion-card-title>
               </ion-card-header>
           </ion-card>
         </ion-col>
