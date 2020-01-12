@@ -29,8 +29,6 @@ export class CarritoService {
 
 
   enviarDetalles(detalles: Detalle[]): Observable<any> {
-    console.log("Todos los detalles",detalles);
-    
     return this.http.post('http://localhost:8080/Libreria/rest/compras/detalles', detalles, {headers: this.httpHeaders});
   }
 

@@ -12,7 +12,7 @@ import { Detalle } from './detalle';
 })
 export class CarritoComprasComponent implements OnInit {
   
-  total:number = 10;
+  subtotal:number = 0;
 
   idsLibro: number[] = [];
   libros: Libro[] = [];
@@ -90,7 +90,8 @@ export class CarritoComprasComponent implements OnInit {
       i++;
     }
     this.serviceCar.enviarDetalles(this.detalles).subscribe(res => {
-      //completar
+      console.log('Subtotal', res);
+      this.subtotal = res
     });
     this.detalles = [];
   }
