@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
 
   login() {
     this.service.login(this.usuario).subscribe(response => {
-      console.log(response);
+      console.log(response, 'aqui');
       
       this.idUser = response.id;
       this.router.navigate(['/inicio'], {queryParams: {

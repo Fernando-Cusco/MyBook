@@ -1,4 +1,5 @@
 import { Direccion } from './direccion';
+import { Tarjeta } from './tarjeta';
 export class Usuario {
     id: number;
     nombres: string;
@@ -6,5 +7,7 @@ export class Usuario {
     password: string;
     fecha: string;
     telefono: string;
-    direcciones: Direccion;
+    direcciones: Direccion[];
+    tarjetas: Tarjeta[]
+
 }

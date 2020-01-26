@@ -32,4 +32,8 @@ export class CarritoService {
     return this.http.post('http://localhost:8080/Libreria/rest/compras/detalles', detalles, {headers: this.httpHeaders});
   }
 
+  realizarPago(detalles: Detalle[]): Observable<any> {
+    return this.http.post('http://localhost:8080/Libreria/rest/compras/factura', detalles, {headers: this.httpHeaders});
+  }
+
 }

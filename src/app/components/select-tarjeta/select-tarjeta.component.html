@@ -1,0 +1,35 @@
+<p>
+  select-tarjeta works!
+  <ion-button (click)="cerrar()">
+    Click me
+  </ion-button>
+
+  <ion-list>
+    <ion-list>
+      <ion-radio-group name="auto">
+        <ion-list-header>Selecciona tu direccion</ion-list-header>
+        <ion-item *ngFor="let tar of tarjetas">
+          <ion-label>{{tar.numero}} {{ tar.vencimiento }}</ion-label>
+          <ion-radio value="tesla"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </ion-list>
+
+  <ion-grid fixed>
+    <ion-row>
+      <h4>Agregar una tarjeta</h4>
+      <ion-col size="6">
+        <ion-input type="number" placeholder="Numero de la tarjeta" name="numero" [(ngModel)]="tarjeta.numero"></ion-input>
+        <ion-input type="text" placeholder="Vencimiento" name="caducidad" [(ngModel)]="tarjeta.vencimiento"></ion-input>
+        <ion-input type="number" placeholder="codigo" name="code" [(ngModel)]="tarjeta.code"></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button (click)="agregarTarjeta()">
+          Agregar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</p>
