@@ -35,6 +35,8 @@ export class SelectTarjetaComponent implements OnInit {
   }
 
   cerrar() {
-    this.modal.dismiss();
+    this.modal.dismiss({
+      idTarjeta: 1
+    });
   }
 }

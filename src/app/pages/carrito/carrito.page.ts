@@ -121,7 +121,7 @@ export class CarritoPage implements OnInit {
       i++;
     }
 
-    this.detalles = [];
+    
 
 
 
@@ -130,7 +130,7 @@ export class CarritoPage implements OnInit {
     console.log('Total', res);
 
     });
-
+    this.detalles = [];
   }
 
   buscar(id: number) {
