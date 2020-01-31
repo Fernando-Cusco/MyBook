@@ -3,4 +3,5 @@ export class Tarjeta {
     numero: string;
     vencimiento: string;
     code: number;
+    idUser: number
 }

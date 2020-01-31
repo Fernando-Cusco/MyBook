@@ -4,4 +4,6 @@ export class Detalle {
     cantidad: number;
     idLib: number;
     idUsuario: number;
+    idTarjeta: number;
+    idDireccion: number;
 }

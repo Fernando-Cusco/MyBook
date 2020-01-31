@@ -1,10 +1,9 @@
-<p>
-  
+<ion-content>
   <ion-list>
     <ion-list>
       <ion-radio-group name="auto">
         <ion-list-header>Selecciona tu direccion</ion-list-header>
-        <ion-item *ngFor="let dir of direcciones">
+        <ion-item *ngFor="let dir of direcciones" (click)="seleccionar(dir.id)">
           <ion-label>{{dir.ciudad}} {{ dir.calles }}</ion-label>
           <ion-radio value="tesla"></ion-radio>
         </ion-item>
@@ -12,11 +11,7 @@
     </ion-list>
   </ion-list>
 
-
-  <ion-button (click)="tarjetas()">
-    Click me
-  </ion-button>
-  <ion-button (click)="cancelar()">
+  <ion-button (click)="cancelar()" color="danger">
     Cancelar
   </ion-button>
-</p>
+</ion-content>

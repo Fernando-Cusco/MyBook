@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { UsuarioService } from '../../services/usuario.service';
 import { Direccion } from 'src/app/pages/register/direccion';
+import { SelectTarjetaComponent } from '../select-tarjeta/select-tarjeta.component';
 
 
 @Component({
@@ -11,13 +12,16 @@ import { Direccion } from 'src/app/pages/register/direccion';
 })
 export class SelectDireccionComponent implements OnInit {
 
-  @Input('usuario') usuario;
+  @Input() usuario;
+  @Input() detalles;
+  idDireccion: number;
   direcciones: Direccion[] = [];
-  constructor(private modal: ModalController, private service: UsuarioService) { }
+  constructor(private _modal: ModalController, private service: UsuarioService) { }
   
 
   ngOnInit() {
-    this.service.datosPago(this.usuario).subscribe(res => {
+    
+    this.service.direcciones(this.usuario).subscribe(res => {
       console.log(res);
       
       for (const direccion in res.direcciones) {
@@ -28,14 +32,30 @@ export class SelectDireccionComponent implements OnInit {
 
 
 
-  tarjetas() {
-    this.modal.dismiss({
-      idDireccion: 1
-    });
+  cancelar() {
+    this._modal.dismiss();
   }
 
-  cancelar() {
-    this.modal.dismiss();
+  seleccionar(id: number) {
+    for(let i in this.detalles) {
+      this.detalles[i].idDireccion = id
+    }
+    this._modal.dismiss({
+      idDireccion: id
+    });
+   this.tarjeta();
+    
+  }
+
+  async tarjeta() {
+    const m = await this._modal.create({
+      component: SelectTarjetaComponent,
+      componentProps: {
+        'usuario': this.usuario,
+        'detalles': this.detalles
+      }
+    });
+    m.present();
   }
 
 }

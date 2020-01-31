@@ -16,6 +16,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CarritoPage implements OnInit {
 
+  @Input("idTarjeta") idTarjeta;
+  @Input("idDireccion") idDireccion;
+
   @Input("idUser") idUser;
 
   subtotal: number = 0;
@@ -46,9 +49,9 @@ export class CarritoPage implements OnInit {
 
   ngOnInit() {
     this.router.queryParams
-    .subscribe(params => {
-      this.idUser = params.id
-    });
+      .subscribe(params => {
+        this.idUser = params.id
+      });
     console.log('USUARIO ING', this.idUser);
 
   }
@@ -110,27 +113,31 @@ export class CarritoPage implements OnInit {
     this.detalles = [];
   }
 
-  async pago() {
+
+  pago() {
+
     let i = 0;
     for (let id in this.idsLibro) {
       let det: Detalle = new Detalle();
+      //det.idDireccion = this.idDireccion.idDireccion;
+      //det.idTarjeta = this.idTarjeta.idTarjeta;
       det.cantidad = this.cantidades[i];
       det.idLib = this.idsLibro[id];
       det.idUsuario = this.idUser;
       this.detalles.push(det);
       i++;
     }
+    this.direccion();
 
+   
     
 
+    // this.serviceCar.realizarPago(this.detalles).subscribe(res => {
+    //   console.log('Total', res);
 
-
-
-    this.serviceCar.realizarPago(this.detalles).subscribe(res => {
-    console.log('Total', res);
-
-    });
-    this.detalles = [];
+    // });
+    // this.detalles = [];
+  
   }
 
   buscar(id: number) {
@@ -140,26 +147,33 @@ export class CarritoPage implements OnInit {
   }
 
   async tarjeta() {
-      const t = await this.modalCtrl.create({
-        component: SelectTarjetaComponent,
-        componentProps: {
-          'usuario': this.idUser
-        }
-      });
-      t.present();
-      const { data } = await t.onDidDismiss();
+    const t = await this.modalCtrl.create({
+      component: SelectTarjetaComponent,
+      componentProps: {
+        'usuario': this.idUser,
+        
+      }
+    });
+    t.present();
+    const { data } = await t.onDidDismiss();
+    this.idTarjeta = data;
+    
+    
   }
 
   async direccion() {
     const m = await this.modalCtrl.create({
       component: SelectDireccionComponent,
       componentProps: {
-        'usuario': this.idUser
+        'usuario': this.idUser,
+        'detalles': this.detalles
       }
     });
+    this.detalles = [];
     m.present();
     const { data } = await m.onDidDismiss();
-    
+    this.idDireccion = data;
+
   }
 
 }
