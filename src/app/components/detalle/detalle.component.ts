@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { LibrosService } from '../../services/libros.service';
 import { Libro } from 'src/app/pages/inicio/libro';
 import { CarritoService } from '../../services/carrito.service';
@@ -16,7 +16,7 @@ export class DetalleComponent implements OnInit {
   @Input() id;
   @Input() idUser;
   poster = 'http://es.web.img2.acsta.net/pictures/210/521/21052107_20131023133923735.jpg';
-  constructor(private modalCtrl: ModalController, private service: LibrosService, private serviceCar: CarritoService) {
+  constructor(private modalCtrl: ModalController, private service: LibrosService, private serviceCar: CarritoService, private toast: ToastController) {
 
   }
 
@@ -40,14 +40,23 @@ export class DetalleComponent implements OnInit {
 
   votar() {
     this.service.votar(this.idUser, this.id).subscribe(response => {
-      console.log(response);
-
+      this.mensaje(response.mensaje);
     });
   }
 
   agregarAlCarrito(id: number) {
     //guardar en el storage el id del libro y recuperar en el carrito de compras
     this.serviceCar.agregarCarrito(id);
+    this.mensaje('Agregado al carrito')
+    
+  }
+
+  async mensaje(msj: string) {
+    const t = await this.toast.create({
+      message: msj,
+      duration: 2000
+    });
+    t.present();
   }
 
 }
