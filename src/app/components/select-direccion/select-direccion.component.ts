@@ -20,14 +20,8 @@ export class SelectDireccionComponent implements OnInit {
   
 
   ngOnInit() {
-    
-    this.service.direcciones(this.usuario).subscribe(res => {
-      console.log(res);
-      
-      for (const direccion in res.direcciones) {
-          this.direcciones.push(res.direcciones[direccion]);
-      }
-    });
+    this.cargarDirecciones();
+   
   }
 
 
@@ -58,4 +52,23 @@ export class SelectDireccionComponent implements OnInit {
     m.present();
   }
 
+  doRefresh(event) {
+    setTimeout(() => {
+      this.direcciones = [];
+      this.cargarDirecciones();
+      event.target.complete();
+    }, 2500);
+  }
+
+  cargarDirecciones() {
+    this.service.direcciones(this.usuario).subscribe(res => {
+      console.log(res);
+      
+      for (const direccion in res) {
+          this.direcciones.push(res[direccion]);
+      }
+    });
+  }
+
 }
+

@@ -4,6 +4,7 @@ import { Usuario } from '../pages/register/usuario';
 import { Observable } from 'rxjs';
 import { Respuesta } from '../pages/register/respuesta';
 import { Tarjeta } from '../pages/register/tarjeta';
+import { Direccion } from '../pages/register/direccion';
 
 @Injectable({
   providedIn: 'root'
@@ -23,13 +24,13 @@ export class UsuarioService {
     return this.http.post<Respuesta>('http://localhost:8080/Libreria/rest/usuario/registro', usuario, {headers: this.httpHeaders});
   }
 
-  direcciones(id: number): Observable<Usuario>{
-    return this.http.get<Usuario>(`http://localhost:8080/Libreria/rest/compras/direcciones?id=${id}`);
+  direcciones(id: number): Observable<Direccion[]>{
+    return this.http.get<Direccion[]>(`http://localhost:8080/Libreria/rest/compras/direcciones?id=${id}`);
 
   }
 
-  tarjetas(id: number): Observable<Usuario>{
-    return this.http.get<Usuario>(`http://localhost:8080/Libreria/rest/compras/tarjetas?id=${id}`);
+  tarjetas(id: number): Observable<Tarjeta[]>{
+    return this.http.get<Tarjeta[]>(`http://localhost:8080/Libreria/rest/compras/tarjetas?id=${id}`);
 
   }
 

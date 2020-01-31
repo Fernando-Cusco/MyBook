@@ -21,13 +21,7 @@ export class SelectTarjetaComponent implements OnInit {
   constructor(private modal: ModalController, private service: UsuarioService,  private serviceCar: CarritoService, private toast: ToastController) { }
 
   ngOnInit() {
-    
-    this.service.tarjetas(this.usuario).subscribe(res => {
-      
-      for (const t in res.tarjetas) {
-        this.tarjetas.push(res.tarjetas[t]);
-      }
-    })
+    this.cargarTarjetas();
   }
 
   seleccionar(id: number) {
@@ -51,13 +45,56 @@ export class SelectTarjetaComponent implements OnInit {
   }
 
   pagar() {
-    this.serviceCar.realizarPago(this.detalles).subscribe(res => {
+    this.confirmarPago();
+   
+  }
+
+  realizarPago() {
+     this.serviceCar.realizarPago(this.detalles).subscribe(res => {
       console.log('Total', res);
 
     });
   }
 
+  doRefresh(event) {
+    setTimeout(() => {
+      this.tarjetas = [];
+      this.cargarTarjetas();
+      event.target.complete();
+    }, 2500);
+  }
 
-  
+  async confirmarPago() {
+    const t = await this.toast.create({
+      header: 'Seguro quieres realizar el pago?',
+      message: 'Click to close',
+      position: 'middle',
+      buttons: [
+        {
+          side: 'start',
+          icon: 'add',
+          text: 'Realizar Pago',
+          handler: () => {
+            this.realizarPago();
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    t.present();
+  }
 
+  cargarTarjetas() {
+    this.service.tarjetas(this.usuario).subscribe(res => {
+      for (let t in res) {
+        this.tarjetas.push(res[t]);
+      }
+    });
+  }
 }
