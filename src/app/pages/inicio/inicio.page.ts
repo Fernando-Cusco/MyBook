@@ -4,8 +4,7 @@ import { Libro } from './libro';
 import { ModalController } from '@ionic/angular';
 import { DetalleComponent } from '../../components/detalle/detalle.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CarritoComprasComponent } from '../../components/carrito-compras/carrito-compras.component';
-import { Autor } from './autor';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-inicio',
@@ -24,16 +23,18 @@ export class InicioPage implements OnInit {
   }
 
   constructor(private service: LibrosService,
+              private online: CarritoService,
               private modalCtrl: ModalController,
               private router: ActivatedRoute,
               private route: Router) { 
   }
 
   ngOnInit() {
-    this.router.queryParams
-    .subscribe(params => {
-      this.idUser = params.id
-    });
+    this.usuarioOnline();
+    // this.router.queryParams
+    // .subscribe(params => {
+    //   this.idUser = params.id
+    // });
     this.service.todas().subscribe(response => {
       this.libros = response;
       this.libros.forEach(element => {
@@ -43,6 +44,11 @@ export class InicioPage implements OnInit {
       console.log(error);
       
     })
+    
+  }
+
+  async usuarioOnline() {
+    this.idUser = await this.online.online();
     console.log('USUARIO ING', this.idUser);
   }
 
@@ -55,6 +61,12 @@ export class InicioPage implements OnInit {
       }
     });
     modal.present();
+  }
+
+
+  cerrarSesion() {
+    this.online.offline();
+    this.route.navigate(['/login']);
   }
 
   carrito() {

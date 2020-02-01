@@ -11,7 +11,7 @@
         <ion-item *ngFor="let tar of tarjetas" (click)="seleccionar(tar.id)">
           <ion-label>Tarjeta {{tar.numero}}</ion-label>
           <ion-label>{{ tar.vencimiento }}</ion-label>
-          <ion-radio value="tesla"></ion-radio>
+          <ion-radio></ion-radio>
         </ion-item>
       </ion-radio-group>
     </ion-list>

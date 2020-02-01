@@ -52,8 +52,13 @@ export class SelectTarjetaComponent implements OnInit {
   realizarPago() {
      this.serviceCar.realizarPago(this.detalles).subscribe(res => {
       console.log('Total', res);
-
     });
+    this.vaciarCarrito();
+
+  }
+
+  async vaciarCarrito() {
+    this.serviceCar.vaciarCarrito();
   }
 
   doRefresh(event) {
@@ -67,12 +72,10 @@ export class SelectTarjetaComponent implements OnInit {
   async confirmarPago() {
     const t = await this.toast.create({
       header: 'Seguro quieres realizar el pago?',
-      message: 'Click to close',
       position: 'middle',
       buttons: [
         {
           side: 'start',
-          icon: 'add',
           text: 'Realizar Pago',
           handler: () => {
             this.realizarPago();

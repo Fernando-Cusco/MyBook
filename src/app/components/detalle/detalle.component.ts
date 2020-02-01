@@ -47,7 +47,7 @@ export class DetalleComponent implements OnInit {
   agregarAlCarrito(id: number) {
     //guardar en el storage el id del libro y recuperar en el carrito de compras
     this.serviceCar.agregarCarrito(id);
-    this.mensaje('Agregado al carrito')
+    //this.mensaje('Agregado al carrito')
     
   }
 

@@ -34,8 +34,14 @@ export class CarritoPage implements OnInit {
     private serviceCar: CarritoService,
     private service: LibrosService,
     private router: ActivatedRoute) {
+      this.usuarioOnline();
     this.cargar();
 
+  }
+
+  async usuarioOnline() {
+    this.idUser = await this.serviceCar.online();
+    console.log('USUARIO ING', this.idUser);
   }
 
   async cargar() {
@@ -48,11 +54,11 @@ export class CarritoPage implements OnInit {
   }
 
   ngOnInit() {
-    this.router.queryParams
-      .subscribe(params => {
-        this.idUser = params.id
-      });
-    console.log('USUARIO ING', this.idUser);
+    // this.router.queryParams
+    //   .subscribe(params => {
+    //     this.idUser = params.id
+    //   });
+   
 
   }
 
@@ -89,9 +95,19 @@ export class CarritoPage implements OnInit {
     let x = this.cantidades.indexOf(posx);
     this.cantidades.splice(x, 1);
     /*correjir si el libro eliminado es el correcto por su id*/
+    this.serviceCar.agregarCarrito(lid);
     let l = this.idsLibro.indexOf(lid);
     this.idsLibro.splice(l, 1);
     this.enviarDetalle(this.cantidades);
+  }
+
+  async eliminar(id) {
+    const librosId = await this.serviceCar.cargarCarrito();
+    //buscar y obtener la posicion y luego eliminar por esa posicion
+    let pos = librosId.findIndex(i => i == id);
+    librosId.splice(pos, 1);
+    this.idsLibro = librosId;
+    
   }
 
   enviarDetalle(cant: number[]) {
