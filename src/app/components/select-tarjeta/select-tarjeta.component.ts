@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController, ToastController } from '@ionic/angular';
+import { ModalController, ToastController, PopoverController, LoadingController } from '@ionic/angular';
 import { UsuarioService } from '../../services/usuario.service';
 import { Tarjeta } from '../../pages/register/tarjeta';
 import { CarritoService } from '../../services/carrito.service';
+import { ConfirmarPagoComponent } from '../confirmar-pago/confirmar-pago.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-select-tarjeta',
@@ -18,7 +20,7 @@ export class SelectTarjetaComponent implements OnInit {
 
   tarjetas: Tarjeta[] = [];
 
-  constructor(private modal: ModalController, private service: UsuarioService,  private serviceCar: CarritoService, private toast: ToastController) { }
+  constructor(private loading: LoadingController, private popCtrl: PopoverController,private modal: ModalController, private service: UsuarioService,  private serviceCar: CarritoService, private toast: ToastController, private router: Router) { }
 
   ngOnInit() {
     this.cargarTarjetas();
@@ -70,27 +72,51 @@ export class SelectTarjetaComponent implements OnInit {
   }
 
   async confirmarPago() {
+    const pop = await this.popCtrl.create({
+      component: ConfirmarPagoComponent,
+      mode: 'ios',
+      cssClass: 'pop-over-style',
+      backdropDismiss: false,
+      translucent: true
+    });
+    await pop.present();
+    const { data } = await pop.onDidDismiss();
+    if(data.ok === 'ok') {
+      this.pagando();
+     
+    }
+  }
+
+  pagoRealizado() {
+    this.loading.dismiss().then(() => {
+      this.msj();
+    });
+    this.modal.dismiss();
+  }
+
+  async msj() {
     const t = await this.toast.create({
-      header: 'Seguro quieres realizar el pago?',
+      message: 'Pago realizado correctamente',
+      duration: 1000,
       position: 'middle',
-      buttons: [
-        {
-          side: 'start',
-          text: 'Realizar Pago',
-          handler: () => {
-            this.realizarPago();
-          }
-        },
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
     });
     t.present();
+    this.router.navigate(['/inicio']);
+    this.modal.dismiss();
+
+  }
+
+  async pagando() {
+    const l = await this.loading.create({
+      message: 'Espera estamos realiazando el pago',
+      duration: 2500,
+      translucent: true
+    });
+    l.present();
+    this.realizarPago();
+
+    const { role, data } = await l.onDidDismiss();
+    this.msj();
   }
 
   cargarTarjetas() {
