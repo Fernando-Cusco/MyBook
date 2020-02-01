@@ -17,4 +17,10 @@ export class ConfirmarPagoComponent implements OnInit {
       'ok': 'ok'
     });
   }
+
+  cancelar() {
+    this._pop.dismiss({
+      'cancelar': 'cancelar'
+    });
+  }
 }

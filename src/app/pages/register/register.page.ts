@@ -16,7 +16,7 @@ export class RegisterPage implements OnInit {
 
   usuario: Usuario = new Usuario();
 
-
+  direcciones: Direccion[] = [];
   constructor(private service: UsuarioService,
               private popCtrl: PopoverController,
               private router: Router) { }
@@ -44,7 +44,8 @@ export class RegisterPage implements OnInit {
     });
     await popover.present();
     const { data } = await popover.onWillDismiss();
-    this.usuario.direcciones = data;
+    this.direcciones.push(data)
+    this.usuario.direcciones =  this.direcciones;
     console.log(this.usuario.direcciones);
     
   }

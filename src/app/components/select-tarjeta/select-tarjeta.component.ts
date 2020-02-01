@@ -83,7 +83,8 @@ export class SelectTarjetaComponent implements OnInit {
     const { data } = await pop.onDidDismiss();
     if(data.ok === 'ok') {
       this.pagando();
-     
+    } else {
+      
     }
   }
 
