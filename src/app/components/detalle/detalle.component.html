@@ -4,7 +4,7 @@
       <ion-col size="5">
         <ion-card class="anc">
           <ion-card-header>
-            <ion-img class="alt" [src]="poster"></ion-img>
+            <img [src]="'data:image/JPEG;base64,'+libro.portada"/>
             <ion-card-subtitle *ngIf="libro != null">{{ libro.titulo }}</ion-card-subtitle>
             <ion-card-title *ngFor="let a of autores">
                 <p>{{ a.nombres }}</p>
