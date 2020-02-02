@@ -45,6 +45,7 @@
         </ion-button>
       </ion-col>
     </ion-row>
+
     <ion-row class="ion-text-center">
       <ion-col size="5">
         <ion-button class="siz">
@@ -53,6 +54,18 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+     <ion-fab-button *ngFor="let id of usuariosIds" (click)="compartir(id.id, id.nombres)">
+      <p>{{id.nombres}}</p>
+     </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 
 
 </ion-content>

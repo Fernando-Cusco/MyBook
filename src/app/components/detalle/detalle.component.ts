@@ -4,6 +4,9 @@ import { LibrosService } from '../../services/libros.service';
 import { Libro } from 'src/app/pages/inicio/libro';
 import { CarritoService } from '../../services/carrito.service';
 import { Autor } from '../../pages/inicio/autor';
+import { UsuarioService } from '../../services/usuario.service';
+import { Usuario } from '../../pages/register/usuario';
+import { CompartirTMP } from '../../pages/inicio/compartir';
 
 @Component({
   selector: 'app-detalle',
@@ -13,10 +16,12 @@ import { Autor } from '../../pages/inicio/autor';
 export class DetalleComponent implements OnInit {
   libro: Libro;
   autores: Autor[] = [];
+  usuariosIds: Usuario[] = [];
   @Input() id;
   @Input() idUser;
+  compar: CompartirTMP = new CompartirTMP;
   poster = 'http://es.web.img2.acsta.net/pictures/210/521/21052107_20131023133923735.jpg';
-  constructor(private modalCtrl: ModalController, private service: LibrosService, private serviceCar: CarritoService, private toast: ToastController) {
+  constructor(private modalCtrl: ModalController, private usuarioService: UsuarioService, private service: LibrosService, private serviceCar: CarritoService, private toast: ToastController) {
 
   }
 
@@ -29,6 +34,28 @@ export class DetalleComponent implements OnInit {
       console.log("ERROR: " + error);
       this.regresar();
     });
+
+    this.usuarioService.listarUsuarios().subscribe(res => {
+      console.log('USUARIOS LLEGANDO ',res);
+      
+      for(let i in res){
+        if(this.idUser !== res[i].id) {
+          this.usuariosIds.push(res[i]);
+        }
+      }
+      
+    });
+  }
+
+  compartir(id: number, nombre: string){
+    this.compar.libro = this.id;
+    this.compar.usuarioComparte = this.idUser;
+    this.compar.usuarioRecibe = id;
+    this.service.compartir(this.compar).subscribe(res => {
+      this.mensaje(res.mensaje+" con: "+nombre);
+    });
+    
+    
   }
 
 

@@ -39,4 +39,8 @@ export class UsuarioService {
     
     return this.http.post<Respuesta>(`http://localhost:8080/Libreria/rest/compras/agregarTarjeta`, tarjeta, {headers: this.httpHeaders});
   }
+
+  listarUsuarios(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>('http://localhost:8080/Libreria/rest/usuario/usuarios');
+  }
 }
