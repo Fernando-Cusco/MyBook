@@ -22,6 +22,10 @@ export class CompartidosMeComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.cargar();
+  }
+
+  cargar() {
     this.service.compartidosMe(this.idUser).subscribe(res => {
       console.log('RESPUESTA ',res);
       for (let id in res) {
@@ -30,7 +34,6 @@ export class CompartidosMeComponent implements OnInit {
       }
     });
   }
-
   consultarLibro(id: number) {
     this.serviceL.buscar(id).subscribe(res => {
       console.log(res);
@@ -41,6 +44,15 @@ export class CompartidosMeComponent implements OnInit {
 
   cerrar() {
     this.modal.dismiss();
+  }
+  
+  doRefresh(event) {
+    setTimeout(() => {
+      this.libros = [];
+      this.usuarios = [];
+      this.cargar();
+      event.target.complete();
+    }, 2500);
   }
   
 

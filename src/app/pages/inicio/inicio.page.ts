@@ -31,6 +31,11 @@ export class InicioPage implements OnInit {
   }
 
   ngOnInit() {
+    this.cargar();
+    
+  }
+  
+  cargar() {
     this.usuarioOnline();
     // this.router.queryParams
     // .subscribe(params => {
@@ -38,16 +43,11 @@ export class InicioPage implements OnInit {
     // });
     this.service.todas().subscribe(response => {
       this.libros = response;
-      this.libros.forEach(element => {
-        console.log(element.autores);
-      }); 
     },(error) => {
       console.log(error);
       
-    })
-    
+    });
   }
-
   async usuarioOnline() {
     this.idUser = await this.online.online();
     console.log('USUARIO ING', this.idUser);
@@ -92,6 +92,14 @@ export class InicioPage implements OnInit {
       }
     });
     m.present();
+  }
+
+  doRefresh(event) {
+    setTimeout(() => {
+      this.libros = [];
+      this.cargar();
+      event.target.complete();
+    }, 2500);
   }
 
 }

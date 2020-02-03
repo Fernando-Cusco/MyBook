@@ -16,6 +16,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-slides mode="ios" scrollbar="ios" [options]="slideOpt">
     <ion-slide *ngFor="let libro of libros | pares">
       <ion-row>
