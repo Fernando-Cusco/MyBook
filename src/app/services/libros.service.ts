@@ -31,4 +31,8 @@ export class LibrosService {
   compartir(compartir: CompartirTMP): Observable<Respuesta> {
     return this.http.post<Respuesta>('http://localhost:8080/Libreria/rest/compartir/compatir', compartir, {headers: this.httpHeaders});
   }
+
+  compartidosMe(id: number):Observable<CompartirTMP> {
+    return this.http.get<CompartirTMP>(`http://localhost:8080/Libreria/rest/compartir/compartidos?id=${id}`);
+  }
 }

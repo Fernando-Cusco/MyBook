@@ -5,6 +5,7 @@ import { ModalController } from '@ionic/angular';
 import { DetalleComponent } from '../../components/detalle/detalle.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarritoService } from '../../services/carrito.service';
+import { CompartidosMeComponent } from '../../components/compartidos-me/compartidos-me.component';
 
 @Component({
   selector: 'app-inicio',
@@ -82,5 +83,15 @@ export class InicioPage implements OnInit {
     // modal.present();
   }
 
+
+  async compatidos() {
+    const m = await this.modalCtrl.create({
+      component: CompartidosMeComponent,
+      componentProps: {
+        idUser: this.idUser
+      }
+    });
+    m.present();
+  }
 
 }

@@ -9,12 +9,13 @@ import { SelectDireccionComponent } from './select-direccion/select-direccion.co
 import { SelectTarjetaComponent } from './select-tarjeta/select-tarjeta.component';
 import { FormsModule } from '@angular/forms';
 import { ConfirmarPagoComponent } from './confirmar-pago/confirmar-pago.component';
+import { CompartidosMeComponent } from './compartidos-me/compartidos-me.component';
 
 
 
 @NgModule({
-  entryComponents: [DireccionComponent, DetalleComponent, FooterComponent, CarritoComprasComponent, SelectDireccionComponent, SelectTarjetaComponent, ConfirmarPagoComponent],
-  declarations: [DireccionComponent, DetalleComponent, FooterComponent, CarritoComprasComponent, SelectDireccionComponent, SelectTarjetaComponent, ConfirmarPagoComponent],
+  entryComponents: [DireccionComponent, DetalleComponent, FooterComponent, CarritoComprasComponent, SelectDireccionComponent, SelectTarjetaComponent, ConfirmarPagoComponent, CompartidosMeComponent],
+  declarations: [DireccionComponent, DetalleComponent, FooterComponent, CarritoComprasComponent, SelectDireccionComponent, SelectTarjetaComponent, ConfirmarPagoComponent, CompartidosMeComponent],
   imports: [
     CommonModule,
     IonicModule,
@@ -28,7 +29,8 @@ import { ConfirmarPagoComponent } from './confirmar-pago/confirmar-pago.componen
     CarritoComprasComponent,
     SelectDireccionComponent,
     SelectTarjetaComponent,
-    ConfirmarPagoComponent
+    ConfirmarPagoComponent,
+    CompartidosMeComponent
   ]
 })
 export class ComponentsModule { }
