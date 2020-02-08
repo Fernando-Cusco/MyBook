@@ -3,32 +3,32 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-grid fixed>
-
     <ion-row *ngFor="let libro of libros; let i=index">
       <ion-col size="6">
-       
+
         <ion-card>
           <ion-card-header>
             <ion-card-title>{{  libro.titulo }}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <img [src]="'data:image/JPEG;base64,'+libro.portada"/>
+            <img [src]="'data:image/JPEG;base64,'+libro.portada" />
           </ion-card-content>
         </ion-card>
 
       </ion-col>
       <ion-col size="6">
-        Compartido por: 
-       {{  usuarios[i] }}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-button (click)="cerrar()" color="primary">
-          cerrar
-        </ion-button>
+        Compartido por:
+        {{  usuarios[i] }}
       </ion-col>
     </ion-row>
   </ion-grid>
+  <div clas="empty" *ngIf="libros.length == 0">
+    <h4>Aun no te han compratido libros</h4>
+  </div>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="cerrar()" color="danger">
+      <ion-icon name="close"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

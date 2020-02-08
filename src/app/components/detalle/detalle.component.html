@@ -3,39 +3,42 @@
     <ion-row>
       <ion-col size="5">
         <ion-card class="anc">
-          <ion-card-header>
-            <img [src]="'data:image/JPEG;base64,'+libro.portada"/>
-            <ion-card-subtitle *ngIf="libro != null">{{ libro.titulo }}</ion-card-subtitle>
-            <ion-card-title *ngFor="let a of autores">
-                <p>{{ a.nombres }}</p>
-            </ion-card-title>
-          </ion-card-header>
+
+          <img [src]="'data:image/JPEG;base64,'+libro.portada" />
+          <ion-card-subtitle *ngIf="libro != null">{{ libro.titulo }}</ion-card-subtitle>
+          <ion-card-title *ngFor="let a of autores">
+            <p>{{ a.nombres }}</p>
+          </ion-card-title>
+
         </ion-card>
       </ion-col>
       <ion-col size="7">
-        <h4 *ngIf="libro != null">{{ libro.titulo }}</h4>
-        <br>
-        <h4 *ngIf="libro != null">
-         {{ libro.descripcion }}
-        </h4>
-        <br>
-        <div>
-          <ion-chip>
-            <ion-icon name="podium" color="primary"></ion-icon>
-            <ion-label *ngIf="libro != null">Numero de paginas: {{ libro.paginas }}</ion-label>
-          </ion-chip>
-          <ion-chip>
-            <ion-icon name="pricetags" color="primary"></ion-icon>
-            <ion-label *ngIf="libro != null">Precio: ${{ libro.precio }}</ion-label>
-          </ion-chip>
-        </div>
+        <ion-text *ngIf="libro != null" color="primary">
+          <h4 text-end>{{ libro.descripcion}}</h4>
+        </ion-text>
+
       </ion-col>
     </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
     <ion-row class="ion-text-center">
       <ion-col size="5">
         <ion-button class="siz" (click)="votar()">
           <ion-icon slot="icon-only" name="thumbs-up"></ion-icon>
         </ion-button>
+      </ion-col>
+      <ion-col size="7">
+
+        <ion-chip>
+          <ion-icon name="podium" color="primary"></ion-icon>
+          <ion-label *ngIf="libro != null">Numero de paginas: {{ libro.paginas }}</ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-icon name="pricetags" color="primary"></ion-icon>
+          <ion-label *ngIf="libro != null">Precio: ${{ libro.precio }}</ion-label>
+        </ion-chip>
+
       </ion-col>
     </ion-row>
     <ion-row class="ion-text-center">
@@ -61,9 +64,9 @@
       <ion-icon name="share"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="start">
-     <ion-fab-button *ngFor="let id of usuariosIds" (click)="compartir(id.id, id.nombres)">
-      <p>{{id.nombres}}</p>
-     </ion-fab-button>
+      <ion-fab-button *ngFor="let id of usuariosIds" (click)="compartir(id.id, id.nombres)">
+        <p>{{id.nombres}}</p>
+      </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
 
@@ -80,4 +83,3 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>
-

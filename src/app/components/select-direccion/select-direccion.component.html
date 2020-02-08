@@ -2,19 +2,20 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-list>
+  <div>
+    <h5 text-center>Elije una direccion</h5>
     <ion-list>
-      <ion-radio-group name="auto">
-        <ion-list-header>Selecciona tu direccion</ion-list-header>
-        <ion-item *ngFor="let dir of direcciones" (click)="seleccionar(dir.id)">
-          <ion-label>{{dir.ciudad}} {{ dir.calles }}</ion-label>
-          <ion-radio value="tesla"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
+      <ion-list>
+        <ion-radio-group name="auto">
+          <ion-item *ngFor="let dir of direcciones" (click)="seleccionar(dir.id)">
+            <ion-label>{{dir.ciudad}} {{ dir.calles }}</ion-label>
+            <ion-radio value="tesla"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
     </ion-list>
-  </ion-list>
-
-  <ion-button (click)="cancelar()" color="danger">
+  </div>
+  <ion-button (click)="cancelar()" color="danger" expand="full">
     Cancelar
   </ion-button>
 </ion-content>
