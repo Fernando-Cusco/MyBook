@@ -1,4 +1,5 @@
 import { Autor } from './autor';
+import { Categoria } from './categoria';
 export class Libro {
     id: number;
     titulo: string;
@@ -9,4 +10,5 @@ export class Libro {
     precio: number;
     stock: number;
     autores: Autor[]
+    categorias: Categoria[];
 }
