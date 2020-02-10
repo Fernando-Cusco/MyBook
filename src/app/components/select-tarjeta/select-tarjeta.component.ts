@@ -37,7 +37,9 @@ export class SelectTarjetaComponent implements OnInit {
   agregarTarjeta() {
     this.tarjeta.idUser = this.usuario;
     this.service.agregarTarjeta(this.tarjeta).subscribe(res => {
-      console.log(res);
+      if(res.id == 1) {
+        this.msjTarjeta("Tarjeta agregada correctamente");
+      }
       
     });
   }
@@ -93,6 +95,16 @@ export class SelectTarjetaComponent implements OnInit {
       this.msj();
     });
     this.modal.dismiss();
+  }
+
+  async msjTarjeta(mensaje: string) {
+    const t = await this.toast.create({
+      message: mensaje,
+      duration: 1000,
+      position: 'middle',
+    });
+    t.present();
+
   }
 
   async msj() {

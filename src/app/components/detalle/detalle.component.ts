@@ -7,6 +7,7 @@ import { Autor } from '../../pages/inicio/autor';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../pages/register/usuario';
 import { CompartirTMP } from '../../pages/inicio/compartir';
+import { Categoria } from '../../pages/inicio/categoria';
 
 @Component({
   selector: 'app-detalle',
@@ -16,6 +17,7 @@ import { CompartirTMP } from '../../pages/inicio/compartir';
 export class DetalleComponent implements OnInit {
   libro: Libro;
   autores: Autor[] = [];
+  categorias: Categoria[] = [];
   usuariosIds: Usuario[] = [];
   @Input() id;
   @Input() idUser;
@@ -29,6 +31,7 @@ export class DetalleComponent implements OnInit {
     this.service.buscar(this.id).subscribe(response => {
       console.log('Found', response);
       this.autores = response.autores;
+      this.categorias = response.categorias;
       this.libro = response;
     }, (error) => {
       console.log("ERROR: " + error);
