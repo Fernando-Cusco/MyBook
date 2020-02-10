@@ -1,17 +1,22 @@
 <ion-footer>
   <ion-toolbar>
-    <ion-buttons slot="start" class="margi">
+   
+    
+    <ion-buttons slot="start" class="margd">
       <ion-button (click)="inicio()">
         <ion-icon slot="start" name="home"></ion-icon>
         Inicio
       </ion-button>
-    </ion-buttons>
-    
-    <ion-buttons slot="end" class="margd">
       <ion-button (click)="buscar()">
         <ion-icon slot="start" name="search"></ion-icon>
         Buscar
       </ion-button>
+      <ion-button (click)="compras()">
+        <ion-icon slot="start" name="cart"></ion-icon>
+        Mis Compras
+      </ion-button>
     </ion-buttons>
+
+   
   </ion-toolbar>
 </ion-footer>

@@ -19,4 +19,8 @@ export class FooterComponent implements OnInit {
     this.router.navigate(['buscar']);
   }
 
+  compras() {
+    this.router.navigate(['mis-compras']);
+  }
+
 }

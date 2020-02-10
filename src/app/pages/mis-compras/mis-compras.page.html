@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>mis-compras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let i of compras; let j=index">
+    <ion-card-header>
+      <ion-card-subtitle>Descripcion: {{ i.descripcion }}</ion-card-subtitle>
+      <ion-card-subtitle>Fecha: {{ i.fecha | date }}</ion-card-subtitle>
+      <ion-card-subtitle>Total: ${{ i.total}}</ion-card-subtitle>
+      <ion-card-title *ngFor="let d of i.detalles">Items {{ d.cantidad }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Facturado a nombre de: {{ i.usuario.nombres }}
+    </ion-card-content>
+  </ion-card>
+
+  
+</ion-content>
+<app-footer></app-footer>

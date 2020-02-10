@@ -43,4 +43,9 @@ export class UsuarioService {
   listarUsuarios(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>('http://localhost:8080/Libreria/rest/usuario/usuarios');
   }
+
+  misCompras(id: number):Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:8080/Libreria/rest/usuario/miscompras?id=${id}`);
+  }
+
 }
