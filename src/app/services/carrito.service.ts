@@ -72,13 +72,13 @@ export class CarritoService {
   }
 
   enviarDetalles(detalles: Detalle[]): Observable<any> {
-    return this.http.post('http://localhost:8080/Libreria/rest/compras/detalles', detalles, {headers: this.httpHeaders});
+    return this.http.post('http://http://34.95.200.214/Libreria/rest/compras/detalles', detalles, {headers: this.httpHeaders});
   }
 
   realizarPago(detalles: Detalle[]): Observable<any> {
     console.log(detalles,' here');
     
-    return this.http.post('http://localhost:8080/Libreria/rest/compras/factura', detalles, {headers: this.httpHeaders});
+    return this.http.post('http://http://34.95.200.214/Libreria/rest/compras/factura', detalles, {headers: this.httpHeaders});
   }
 
 }
