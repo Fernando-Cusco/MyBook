@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content class="ion-padding">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -17,7 +17,7 @@
     </ion-list>
   </ion-list>
 
-  <ion-grid fixed>
+  <ion-grid>
     <h4>Agregar una tarjeta</h4>
     <ion-row>
       <ion-col size="8">
@@ -32,13 +32,22 @@
         </ion-button>
       </ion-col>
     </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-button (click)="pagar()">
+          Realizar Pago
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button (click)="cerrar()" color="danger">
+          Cancelar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
 
 
-  <ion-button (click)="pagar()">
-    Realizar Pago
-  </ion-button>
-  <ion-button (click)="cerrar()" color="danger">
-    Cancelar
-  </ion-button>
+
 </ion-content>
