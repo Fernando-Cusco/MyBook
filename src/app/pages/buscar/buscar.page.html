@@ -12,7 +12,7 @@
 
   <ion-list>
     <ion-item *ngFor="let libro of libros">
-      <ion-card>
+      <ion-card (click)="verDetalle(libro.id)">
         <img [src]="'data:image/JPEG;base64,'+libro.portada"/>
         <ion-card-header>
           <ion-card-subtitle>{{ libro.fechaPublicacion | date: 'dd/MM/yyyy' }}</ion-card-subtitle>

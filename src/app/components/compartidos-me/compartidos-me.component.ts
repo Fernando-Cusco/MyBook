@@ -3,6 +3,7 @@ import { LibrosService } from '../../services/libros.service';
 import { Libro } from 'src/app/pages/inicio/libro';
 import { UsuarioService } from '../../services/usuario.service';
 import { ModalController } from '@ionic/angular';
+import { DetalleComponent } from '../detalle/detalle.component';
 
 @Component({
   selector: 'app-compartidos-me',
@@ -15,11 +16,11 @@ export class CompartidosMeComponent implements OnInit {
   usuarios: string[] = []
 
 
-  constructor(private service: LibrosService, private serviceL: LibrosService, private modal: ModalController) {
-  
-  
-    
-   }
+  constructor(private service: LibrosService, private serviceL: LibrosService, private _modal: ModalController) {
+
+
+
+  }
 
   ngOnInit() {
     this.cargar();
@@ -27,7 +28,6 @@ export class CompartidosMeComponent implements OnInit {
 
   cargar() {
     this.service.compartidosMe(this.idUser).subscribe(res => {
-      console.log('RESPUESTA ',res);
       for (let id in res) {
         this.consultarLibro(res[id].libro);
         this.usuarios.push(res[id].nombreUsuario)
@@ -36,16 +36,14 @@ export class CompartidosMeComponent implements OnInit {
   }
   consultarLibro(id: number) {
     this.serviceL.buscar(id).subscribe(res => {
-      console.log(res);
-      
       this.libros.push(res);
     });
   }
 
   cerrar() {
-    this.modal.dismiss();
+    this._modal.dismiss();
   }
-  
+
   doRefresh(event) {
     setTimeout(() => {
       this.libros = [];
@@ -54,6 +52,17 @@ export class CompartidosMeComponent implements OnInit {
       event.target.complete();
     }, 2500);
   }
-  
+
+
+  async verDetalle(id: number) {
+    const m = await this._modal.create({
+      component: DetalleComponent,
+      componentProps: {
+        id: id,
+        idUser: this.idUser
+      }
+    });
+    m.present();
+  }
 
 }

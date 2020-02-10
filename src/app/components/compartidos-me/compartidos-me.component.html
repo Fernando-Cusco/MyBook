@@ -4,8 +4,7 @@
   </ion-refresher>
   <ion-grid fixed>
     <ion-row *ngFor="let libro of libros; let i=index">
-      <ion-col size="6">
-
+      <ion-col size="6" (click)="verDetalle(libro.id)">
         <ion-card>
           <ion-card-header>
             <ion-card-title>{{  libro.titulo }}</ion-card-title>
