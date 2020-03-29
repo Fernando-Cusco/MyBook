@@ -5,6 +5,7 @@ import { Direccion } from './direccion';
 import { PopoverController } from '@ionic/angular';
 import { DireccionComponent } from 'src/app/components/direccion/direccion.component';
 import { Router } from '@angular/router';
+import { Libro } from '../inicio/libro';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
 
+  
   usuario: Usuario = new Usuario();
 
   direcciones: Direccion[] = [];
